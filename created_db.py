@@ -9,7 +9,7 @@ cursor = conn.cursor()
 
 cursor.execute("""
 CREATE TABLE rss_links (
-    id SERIAL PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     rss_link VARCHAR(255) NOT NULL,
     category_id INT,
     language_id INT,
@@ -23,7 +23,7 @@ CREATE TABLE rss_links (
 
 cursor.execute("""
 CREATE TABLE categories (
-    id SERIAL PRIMARY KEY,
+    id INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
     category_name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -33,7 +33,7 @@ CREATE TABLE categories (
 
 cursor.execute("""
 CREATE TABLE languages (
-    id SERIAL PRIMARY KEY,
+    id  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     language_name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -43,7 +43,7 @@ CREATE TABLE languages (
 
 cursor.execute("""
 CREATE TABLE saved_news (
-    id SERIAL PRIMARY KEY,
+    id  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     news_title VARCHAR(255) NOT NULL,
     news_short TEXT,
     source_name VARCHAR(255),
