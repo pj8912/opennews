@@ -1,6 +1,4 @@
-from base import BaseModel
-
-class Category(BaseModel):
+class Category():
     def __init__(self, conn, cursor):
         self.conn  = conn
         self.cursor = cursor
