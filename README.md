@@ -1,5 +1,5 @@
-# makeyournews
-Make your news
+# openews
+open source news app
 
 ## Clone Repo
 ```
