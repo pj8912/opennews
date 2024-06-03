@@ -1,0 +1,27 @@
+/* flash message */
+
+.error {
+    background: rgb(245, 61, 61) !important;
+}
+
+
+.success{
+    background: rgb(99, 255, 99) !important;
+}
+
+#div_flash{
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    /* gap: 10px; */
+    width: 500px;
+    margin-left: -10px;
+    border-radius: 10px;
+
+}
+
+#remove-flash{
+    margin-left: auto;
+    cursor: pointer;
+}

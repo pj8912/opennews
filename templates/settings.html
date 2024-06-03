@@ -1,0 +1,147 @@
+{%extends 'wrapper.html' %}
+
+
+{%block content%}
+<div class="container">
+
+
+
+    <div class="row">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    <ul class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'error' %}
+        <div class="error" id="div_flash">
+            {{ message }}
+
+            <span type="button" onclick="removeFlash()" style="float: right" id="remove-flash">
+                <i class="bi bi-trash" style="font-size: 14px;"></i>
+            </span>
+        </div>
+        {%endif%}
+
+        {% if category == 'success' %}
+        <div class="success" id="div_flash">
+            {{ message }}
+
+            <!-- <span type="button" onclick="removeFlash()" style="float: right">X</span> -->
+            <span type="button" onclick="removeFlash()" style="float: right" id="remove-flash">
+                <i class="bi bi-trash" style="font-size: 14px;"></i>
+            </span>
+        </div>
+        {%endif%}
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+    {% endwith %}
+
+
+        <div class="col-md-2 mt-5">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                    <button class="nav-link active" id="v-pills-add-rss-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                        aria-selected="true">Add Rss Link</button>
+
+                    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                        aria-selected="false">View Rss Links</button>
+
+                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+                        aria-selected="false">Add Category</button>
+
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                        aria-selected="false">Settings</button>
+
+
+                    <button class="nav-link" id="v-pills-add-language-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-add-language" type="button" role="tab"
+                        aria-controls="v-pills-add-language" aria-selected="false">Add Language</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10 mt-5">
+            <div class="tab-content" id="v-pills-tabContent">
+
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-add-rss-tab" tabindex="0">
+                    <div class="m-auto col-md-4">
+                        <h1>Add Rss Link</h1>
+
+                        <form action="/add/rss">
+                            <div class="mb-2">
+                                <input type="url" name="rsslink" placeholder="Add Rss Link" class="form-control">
+                            </div>
+                            <div class="mb-2">
+                                <select name="cat_id" required class="form-control">
+                                    <option>Select Category</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary">submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+                    tabindex="0">...</div>
+
+                <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab"
+                    tabindex="0">...</div>
+
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"
+                    tabindex="0">
+                    <div class="m-auto col-md-4">
+                        <h3>Add Category</h3>
+                        <form action="/addcategory" method="post">
+                            <div class="mb-2">
+                                <input type="text" class="form-control" name="cat_name" placeholder="Add Category">
+                            </div>
+                            <div class="mb-2">
+                                <select name="language" class="form-control" placeholder="select language">
+                                    <option value="english">English</option>
+                                    <option value="tamil">Tamil</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"
+                    tabindex="0">...</div>
+
+                <div class="tab-pane fade" id="v-pills-add-language" role="tabpanel"
+                    aria-labelledby="v-pills-add-language-tab" tabindex="0">
+                    <div class="col-md-4 m-auto">
+                        <h3>Add Language</h3>
+                        <form action="/addlanguage" method="post">
+                            <div class="mb-2">
+                                <input type="text" name="language" placeholder="Language" class="form-control">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}

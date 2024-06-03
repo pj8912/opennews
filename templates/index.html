@@ -1,0 +1,40 @@
+{%extends 'wrapper.html' %}
+
+
+{%block content%}
+<div class="container">
+    <!-- flash message -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+    <ul class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'error' %}
+        <div class="error" id="div_flash">
+            {{ message }}
+
+            <span type="button" onclick="removeFlash()" style="float: right" id="remove-flash">
+                <i class="bi bi-trash" style="font-size: 14px;"></i>
+            </span>
+        </div>
+        {%endif%}
+
+        {% if category == 'success' %}
+        <div class="success" id="div_flash">
+            {{ message }}
+
+            <!-- <span type="button" onclick="removeFlash()" style="float: right">X</span> -->
+            <span type="button" onclick="removeFlash()" style="float: right" id="remove-flash">
+                <i class="bi bi-trash" style="font-size: 14px;"></i>
+            </span>
+        </div>
+        {%endif%}
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+    {% endwith %}
+
+Home
+</div>
+{%endblock%}
